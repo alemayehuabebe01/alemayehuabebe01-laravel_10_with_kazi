@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AgentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +29,17 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::middleware(['auth','role:admin'])->group(function(){
+
+Route::get('/Admin/Dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+
+});// end group for admin middleware
+
+Route::middleware(['auth','role:agent'])->group(function(){
+
+Route::get('/Agent/Dashboard', [AgentController::class, 'AgentDashboard'])->name('agent.dashboard');
+
+});// end group for agent middleware
 
 require __DIR__.'/auth.php';
