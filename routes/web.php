@@ -30,18 +30,25 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+        //admin route midlleware
 Route::middleware(['auth','role:admin'])->group(function(){
 
 Route::get('/Admin/Dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
 Route::get('/Admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
+Route::get('/Admin/Profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
 
 });// end group for admin middleware
 
+
+        //agent route midlleware
 Route::middleware(['auth','role:agent'])->group(function(){
 
 Route::get('/Agent/Dashboard', [AgentController::class, 'AgentDashboard'])->name('agent.dashboard');
 
 });// end group for agent middleware
+
+
 
 Route::get('/Admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 
