@@ -37,6 +37,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
 Route::get('/Admin/Dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
 Route::get('/Admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
 Route::get('/Admin/Profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
+Route::post('/Admin/Profile/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
+
 
 });// end group for admin middleware
 
