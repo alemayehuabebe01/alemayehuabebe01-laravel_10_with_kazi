@@ -38,6 +38,8 @@ Route::get('/Admin/Dashboard', [AdminController::class, 'AdminDashboard'])->name
 Route::get('/Admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
 Route::get('/Admin/Profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
 Route::post('/Admin/Profile/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
+Route::get('/Admin/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
+Route::post('/Admin/update/password', [AdminController::class, 'AdminUpdatePassword'])->name('admin.update.password');
 
 
 });// end group for admin middleware
