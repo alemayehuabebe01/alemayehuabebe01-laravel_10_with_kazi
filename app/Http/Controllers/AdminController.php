@@ -80,11 +80,11 @@ class AdminController extends Controller
         
         $request->validate([
             'old_password' => 'required',
-            'new_password' => 'required|confirmed',
+            'new_password' => 'required',
            
         ]);
 
-        if(!Hash::check($request->old_password, Auth::user()->password)){
+        if(!Hash::check($request->old_password, auth::user()->password)){
          
             $notification = array(
                 'message' => 'The old and new password not mach please try agin',
